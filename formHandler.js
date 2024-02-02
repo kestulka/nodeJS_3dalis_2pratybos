@@ -9,10 +9,10 @@ form.addEventListener("submit", (event) => {
   const country = document.getElementById("directorsCountryInput").value;
 
   const directorData = {
-    firstName,
-    lastName,
-    oscars,
-    country,
+    firstname: firstName,
+    lastname: lastName,
+    oscars: oscars,
+    country: country,
   };
 
   fetch("/api/directors", {
