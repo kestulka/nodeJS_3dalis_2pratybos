@@ -1,15 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="styles.css" />
     <title>Document</title>
-</head>
-<body>
-    <div id="app"></div>
-    <div id="result"></div>
-    <script src="script.js"></script>
-</body>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row justify-content-center">
+        <form
+          class="col-md-6"
+          id="directorsForm"
+          action="/api/directors"
+          method="POST"
+        >
+          <legend>Directors</legend>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"
+              >First name</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="directorsFirstNameInput"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Last name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="directorsLastNameInput"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Oscars</label>
+            <input
+              type="number"
+              class="form-control"
+              id="directorsOscarsInput"
+              aria-describedby="emailHelp"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"
+              >Country</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="directorsCountryInput"
+            />
+          </div>
+          <button
+            type="submit"
+            class="btn btn-primary"
+            id="directorsCreateButton"
+          >
+            Create
+          </button>
+          <button
+            type="submit"
+            class="btn btn-primary"
+            id="directorsReadButton"
+          >
+            Read
+          </button>
+          <button
+            type="submit"
+            class="btn btn-primary"
+            id="directorsUpdateButton"
+          >
+            Update
+          </button>
+          <button
+            type="submit"
+            class="btn btn-primary"
+            id="directorsDeleteButton"
+          >
+            Delete
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="app.js"></script>
+    <script src="formHandler.js"></script>
+  </body>
 </html>

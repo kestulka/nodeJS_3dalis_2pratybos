@@ -10,7 +10,6 @@ const createDirector = async (req, res) => {
     !req.body.country
   ) {
     res.status(404).send("there is no data available");
-    
   }
   const director = new Director({
     firstname: req.body.firstname,
@@ -25,23 +24,23 @@ const createDirector = async (req, res) => {
 
 // @ route GET /api/directors/fullInfo
 
-const getDirectorWithMovies = async(req, res)=>{
-  const directorsWithBooks = await Director.aggregate([{
+const getDirectorWithMovies = async (req, res) => {
+  const directorsWithBooks = await Director.aggregate([
+    {
       $lookup: {
-          from: "movies",
-          localField: "_id",
-          foreignField: "movieDirector",
-          as: "movies",
-      }
-  }])
-if(!directorsWithBooks){
-  res.status(404).send("director not found");
-  return
-}
-res.status(200).send(directorsWithBooks);
-}
-
-
+        from: "movies",
+        localField: "_id",
+        foreignField: "movieDirector",
+        as: "movies",
+      },
+    },
+  ]);
+  if (!directorsWithBooks) {
+    res.status(404).send("director not found");
+    return;
+  }
+  res.status(200).send(directorsWithBooks);
+};
 
 //@ route GET /api/directors/all
 
@@ -64,7 +63,6 @@ const getDirectorByID = async (req, res) => {
   }
   res.status(200).json(directorById);
 };
-
 
 //@ route PUT /api/directors/:id
 

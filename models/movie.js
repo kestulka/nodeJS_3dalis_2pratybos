@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const movieSchema = new mongoose.Schema({
   movieDirector: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Director"
+    ref: "Director",
   },
   title: {
     type: String,

@@ -40,11 +40,9 @@ app.get("/api/movies/all", getAllMovies);
 app.get("/api/movies/:id", getMovieById);
 app.put("/api/movies/:id", updateMovie);
 app.delete("/api/movies/:id", deleteMovie);
-app.get("/api/movies/full", getInfoAboutMovie)
+app.get("/api/movies/full", getInfoAboutMovie);
 
 // -------------------------------
-
-
 
 // server test
 app.listen(process.env.PORT, () => {

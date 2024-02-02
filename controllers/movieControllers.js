@@ -3,13 +3,18 @@ const Movie = require("../models/movie.js");
 //@ route POST /api/movies
 
 const createMovie = async (req, res) => {
-  if (!req.body.movieDirector || !req.body.title || !req.body.year || !req.body.genre) {
+  if (
+    !req.body.movieDirector ||
+    !req.body.title ||
+    !req.body.year ||
+    !req.body.genre
+  ) {
     res.status(404).send("there is no data available");
   }
 
-  const existingMovie = await Movie.findOne({title: req.body.title});
-  if(existingMovie){
-    return res.status(409).send("movie already exists in database")
+  const existingMovie = await Movie.findOne({ title: req.body.title });
+  if (existingMovie) {
+    return res.status(409).send("movie already exists in database");
   }
 
   const movie = await Movie.create({
@@ -17,10 +22,9 @@ const createMovie = async (req, res) => {
     title: req.body.title,
     year: req.body.year,
     genre: req.body.genre,
-  })
+  });
 
-  res.status(200).json(movie)
-
+  res.status(200).json(movie);
 };
 
 //@ route GET /api/movies/all
@@ -69,19 +73,25 @@ const deleteMovie = async (req, res) => {
   res.status(200).send(result);
 };
 
-
-const getInfoAboutMovie = async(req, res) => {
+const getInfoAboutMovie = async (req, res) => {
   const MoviesFromDB = await Movie.find().populate(
-      "movieDirector",
-      "firstname lastname id oscars country date"
+    "movieDirector",
+    "firstname lastname id oscars country date",
   );
 
-  if(!MoviesFromDB){
-      res.status(404).send("movies not found");
-      return;
+  if (!MoviesFromDB) {
+    res.status(404).send("movies not found");
+    return;
   }
-  res.status(200).json(MoviesFromDB)
-}
+  res.status(200).json(MoviesFromDB);
+};
 
 //
-module.exports = { createMovie, getAllMovies, getMovieById, updateMovie, deleteMovie, getInfoAboutMovie };
+module.exports = {
+  createMovie,
+  getAllMovies,
+  getMovieById,
+  updateMovie,
+  deleteMovie,
+  getInfoAboutMovie,
+};
